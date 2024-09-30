@@ -400,3 +400,48 @@ Complete!
 
 ```
 
+### clone code to this vm 
+
+```
+yum install git -y 
+===>
+
+git clone https://github.com/redashu/unisys_devsecops.git
+Cloning into 'unisys_devsecops'...
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 12 (delta 1), reused 9 (delta 1), pack-reused 0 (from 0)
+Receiving objects: 100% (12/12), done.
+Resolving deltas: 100% (1/1), done.
+
+
+[root@ip-172-31-93-147 ~]# ls
+unisys_devsecops
+[root@ip-172-31-93-147 ~]# 
+
+
+```
+
+### Now run the code 
+
+```
+ls
+unisys_devsecops
+
+[root@ip-172-31-93-147 ~]# cd unisys_devsecops/
+
+[root@ip-172-31-93-147 unisys_devsecops]# ls
+README.md  ashu.py  static  templates
+
+[root@ip-172-31-93-147 unisys_devsecops]# python3 ashu.py 
+ * Serving Flask app 'ashu'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.93.147:5000
+Press CTRL+C to quit
+ * Restarting with stat
+
+```
