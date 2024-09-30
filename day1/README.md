@@ -235,7 +235,7 @@ ashu.py  static  templates
    45   git config --global user.email ashutoshh@linux.com
    46  git config --global user.name redashu
    ===> commited again 
-   
+
 [ashu@ip-172-31-29-58 unisys_devsecops]$ git commit  -m "flask  code ui version1 "
 [master 273c750] flask  code ui version1
  5 files changed, 191 insertions(+)
@@ -245,4 +245,74 @@ ashu.py  static  templates
  create mode 100644 templates/contact.html
  create mode 100644 templates/index.html
 [ashu@ip-172-31-29-58 unisys_devsecops]$ 
+```
+
+## using ssh method to auth and clone 
+
+```
+ ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ashu/.ssh/id_rsa): 
+Created directory '/home/ashu/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ashu/.ssh/id_rsa
+Your public key has been saved in /home/ashu/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:KbmT2FX0HfREyNjARVX98ffosHus6t+GRuobfR8MPq4 ashu@ip-172-31-29-58.ec2.internal
+The key's randomart image is:
++---[RSA 3072]----+
+|          ...O=+B|
+|         . .o.+=.|
+|          . . . =|
+|       . o      +|
+|      o S    . .o|
+|     o =   .+ + .|
+|    . =   .o.O.o |
+|       .  ..=o*..|
+|         o=E=*. .|
++----[SHA256]-----+
+```
+
+### copy public key data and upload to github account 
+
+```
+ cat /home/ashu/.ssh/id_rsa.pub
+ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCageNtc9A5pfWE4lZeQoQnON8ZTE1iHlZJ/3e1SqQHL6pFrK6IXA3JTld1mOelh24mMy80BKhODLGcYoIx97fIopmtoaPXiEGch0EXAOduLls
+```
+
+### push code after clone and copy data 
+
+```
+
+ rm -rf unisys_devsecops/
+ git clone git@github.com:redashu/unisys_devsecops.git
+ cp -r ashu-python-webapp/ashu.py  unisys_devsecops/
+ cp -r ashu-python-webapp/static  unisys_devsecops/
+ cp -r ashu-python-webapp/templates/  unisys_devsecops/
+
+ ==>
+ cd unisys_devsecops/
+
+git add .
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git commit  -m "first code "
+[master 6b4c7af] first code
+ 5 files changed, 191 insertions(+)
+ create mode 100644 ashu.py
+ create mode 100644 static/style.css
+ create mode 100644 templates/about.html
+ create mode 100644 templates/contact.html
+ create mode 100644 templates/index.html
+
+ 
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git push 
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 2.43 KiB | 2.43 MiB/s, done.
+Total 9 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To github.com:redashu/unisys_devsecops.git
+   d17f479..6b4c7af  master -> master
 ```
