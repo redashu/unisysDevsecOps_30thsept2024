@@ -176,3 +176,43 @@ Omit --global to set the identity only in this repository.
 fatal: empty ident name (for <ashu@ip-172-31-29-58.ec2.internal>) not allowed
 ```
 
+## Git using github host platform 
+
+<img src="host1.png">
+
+## git operations 
+
+### clone 
+
+<img src="gitops1.png">
+
+```
+ git  clone https://github.com/redashu/unisys_devsecops.git
+Cloning into 'unisys_devsecops'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls
+ashu-java-webapp  ashu-python-webapp  unisys_devsecops
+```
+
+
+### copy code to git repo 
+
+```
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls
+ashu-java-webapp  ashu-python-webapp  unisys_devsecops
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls  ashu-python-webapp/
+ashu.py  static  templates
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp ashu-python-webapp/ashu.py  unisys_devsecops/
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp -r ashu-python-webapp/static/  unisys_devsecops/
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp -r ashu-python-webapp/templates/  unisys_devsecops/
+
+```
