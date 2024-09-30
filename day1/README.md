@@ -122,3 +122,57 @@ Press CTRL+C to quit
 
 <img src="git1.png">
 
+### git init   (only One time job)
+
+```
+ls
+ashu.py  static  templates
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint:   git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/ashu/ashu-devsecops/ashu-python-webapp/.git/
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ ls  -a
+.  ..  .git  ashu.py  static  templates
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ ls .git/
+HEAD  branches  config  description  hooks  info  objects  refs
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ 
+```
+
+### git add 
+
+```
+ls 
+ashu.py  static  templates
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ git add  .
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ 
+
+```
+
+### git commit -- (take snapshot of current code and remember this time as well)
+
+
+```
+ git commit  -m "python app1 works"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <ashu@ip-172-31-29-58.ec2.internal>) not allowed
+```
+
