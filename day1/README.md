@@ -57,3 +57,38 @@ ashu
 
 [click_here](https://www.youtube.com/watch?v=2M_50-VAUJA)
 
+
+### on Remote jump server creating directory structure 
+
+```
+[ashu@ip-172-31-29-58 ~]$ mkdir  ashu-devsecops 
+[ashu@ip-172-31-29-58 ~]$ mkdir  ashu-devsecops/ashu-python-webapp
+[ashu@ip-172-31-29-58 ~]$ mkdir  ashu-devsecops/ashu-java-webapp
+[ashu@ip-172-31-29-58 ~]$ ls
+ashu-devsecops
+[ashu@ip-172-31-29-58 ~]$ ls  ashu-devsecops/
+ashu-java-webapp  ashu-python-webapp
+[ashu@ip-172-31-29-58 ~]$ 
+
+
+```
+
+### Understanding local development env 
+
+<img src="devp1.png">
+
+### PYthon flask based structure 
+
+```
+tree  ashu-python-webapp/
+ashu-python-webapp/
+├── ashu.py
+├── static
+│   └── style.css
+└── templates
+    ├── about.html
+    ├── contact.html
+    └── index.html
+
+```
+
