@@ -445,3 +445,8 @@ Press CTRL+C to quit
  * Restarting with stat
 
 ```
+
+## FInal dev and OPs team manual work 
+
+<img src="manv.png">
+
