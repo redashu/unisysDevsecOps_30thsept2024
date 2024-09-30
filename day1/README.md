@@ -304,7 +304,7 @@ git add .
  create mode 100644 templates/contact.html
  create mode 100644 templates/index.html
 
- 
+
 [ashu@ip-172-31-29-58 unisys_devsecops]$ git push 
 Enumerating objects: 10, done.
 Counting objects: 100% (10/10), done.
@@ -316,3 +316,87 @@ remote: Resolving deltas: 100% (1/1), done.
 To github.com:redashu/unisys_devsecops.git
    d17f479..6b4c7af  master -> master
 ```
+
+### Deploy python flask app in Raw machine 
+
+## login with root user  in (Redhat Enterprise Linux)
+
+```
+sudo -i
+[root@ip-172-31-93-147 ~]# whoami
+root
+[root@ip-172-31-93-147 ~]# 
+
+
+===> Installing python3.9 
+
+yum install python3.9
+Last metadata expiration check: 0:10:07 ago on Mon Sep 30 10:14:29 2024.
+Package python3-3.9.16-1.amzn2023.0.9.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+
+===> Installing flask 3.0.3 version 
+
+ pip install Flask==3.0.3
+
+
+Collecting Flask==3.0.3
+  Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+     |████████████████████████████████| 101 kB 4.1 MB/s            
+Collecting click>=8.1.3
+  Downloading click-8.1.7-py3-none-any.whl (97 kB)
+     |████████████████████████████████| 97 kB 6.1 MB/s             
+Collecting blinker>=1.6.2
+```
+
+### Installers in Tech  In case pip is not there in then 
+
+<img src="inst.png">
+
+## Install PIp 
+
+```
+yum install python3-pip 
+Last metadata expiration check: 0:16:35 ago on Mon Sep 30 10:14:29 2024.
+Dependencies resolved.
+=========================================================================================================================================================
+ Package                                Architecture                 Version                                     Repository                         Size
+=========================================================================================================================================================
+Installing:
+ python3-pip                            noarch                       21.3.1-2.amzn2023.0.7                       amazonlinux                       1.8 M
+Installing weak dependencies:
+ libxcrypt-compat                       x86_64                       4.4.33-7.amzn2023                           amazonlinux                        92 k
+
+Transaction Summary
+=========================================================================================================================================================
+Install  2 Packages
+
+Total download size: 1.9 M
+Installed size: 11 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): python3-pip-21.3.1-2.amzn2023.0.7.noarch.rpm                                                                       18 MB/s | 1.8 MB     00:00    
+(2/2): libxcrypt-compat-4.4.33-7.amzn2023.x86_64.rpm                                                                     859 kB/s |  92 kB     00:00    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                    9.9 MB/s | 1.9 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                 1/1 
+  Installing       : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                                                       1/2 
+  Installing       : python3-pip-21.3.1-2.amzn2023.0.7.noarch                                                                                        2/2 
+  Running scriptlet: python3-pip-21.3.1-2.amzn2023.0.7.noarch                                                                                        2/2 
+  Verifying        : libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                                                                       1/2 
+  Verifying        : python3-pip-21.3.1-2.amzn2023.0.7.noarch                                                                                        2/2 
+
+Installed:
+  libxcrypt-compat-4.4.33-7.amzn2023.x86_64                                   python3-pip-21.3.1-2.amzn2023.0.7.noarch                                  
+
+Complete!
+
+```
+
