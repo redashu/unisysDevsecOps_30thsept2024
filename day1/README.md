@@ -92,3 +92,33 @@ ashu-python-webapp/
 
 ```
 
+### running python app 
+
+```
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls
+ashu-java-webapp  ashu-python-webapp
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cd ashu-python-webapp/
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ ls
+ashu.py  static  templates
+[ashu@ip-172-31-29-58 ashu-python-webapp]$ python3 ashu.py 
+ * Serving Flask app 'ashu'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.29.58:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 137-732-852
+
+```
+
+## Understanding SCM and VCS 
+
+<img src="svc1.png">
+
+### git overview 
+
+<img src="git1.png">
+
