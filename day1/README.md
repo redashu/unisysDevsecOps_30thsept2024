@@ -52,3 +52,8 @@ ashu
 
 ```
 
+
+### youtube for installing vscode plugin 
+
+[click_here](https://www.youtube.com/watch?v=2M_50-VAUJA)
+
