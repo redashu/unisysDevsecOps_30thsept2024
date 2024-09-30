@@ -216,3 +216,33 @@ ashu.py  static  templates
 [ashu@ip-172-31-29-58 ashu-devsecops]$ cp -r ashu-python-webapp/templates/  unisys_devsecops/
 
 ```
+
+
+## to push the code to remote git repo 
+
+<img src="gitrm.png">
+
+### commiting for the first time 
+
+```
+  41  cd unisys_devsecops/
+   42  ls
+   43  git add .
+   44  git commit  -m "flask  code ui version1 "
+
+   ===> asked for details 
+
+   45   git config --global user.email ashutoshh@linux.com
+   46  git config --global user.name redashu
+   ===> commited again 
+   
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git commit  -m "flask  code ui version1 "
+[master 273c750] flask  code ui version1
+ 5 files changed, 191 insertions(+)
+ create mode 100644 ashu.py
+ create mode 100644 static/style.css
+ create mode 100644 templates/about.html
+ create mode 100644 templates/contact.html
+ create mode 100644 templates/index.html
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+```
