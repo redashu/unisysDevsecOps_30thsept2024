@@ -496,3 +496,13 @@ docker-compose  up -d
 
  docker-compose up -d --build 
 ```
+
+## Before build it is a good action to SAST 
+
+<img src="sast.png">
+
+### more info about it 
+
+<img src="sast1.png">
+
+
