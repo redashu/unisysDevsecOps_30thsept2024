@@ -103,3 +103,139 @@ ashu-remote *                                             tcp://172.31.28.115:23
 default         Current DOCKER_HOST based configuration   unix:///var/run/docker.sock
 
 ```
+
+## App containerization 
+
+<img src="appc.png">
+
+## Docker basic operations 
+
+### listing images
+
+```
+docker  images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+
+### pulling image from docker hub 
+
+```
+ docker pull mysql 
+Using default tag: latest
+latest: Pulling from library/mysql
+eba3c26198b7: Pull complete 
+fc6c33853069: Pull complete 
+f1fa3ee22bea: Pull complete 
+5b8b24615ae8: Pull complete 
+cded0449fb1a: Pull complete 
+095378692b4a: Pull complete 
+110d87e5d2a3: Pull complete 
+bd1dbbbda514: Pull complete 
+982f92841ea3: Pull complete 
+de34c1fda3aa: Pull complete 
+Digest: sha256:92dc869678019f65d761155dacac660a904f6245bfe1b7997da0a73b2bfc68c9
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+```
+
+### pulling a particular version based image 
+
+```
+ docker pull python:3.9-slim
+3.9-slim: Pulling from library/python
+302e3ee49805: Already exists 
+4c0965d39195: Pull complete 
+fdeeec85abba: Pull complete 
+62a08b8dd4f5: Pull complete 
+Digest: sha256:49f94609e5a997dc16086a66ac9664591854031d48e375945a9dbf4d1d53abbc
+Status: Downloaded newer image for python:3.9-slim
+docker.io/library/python:3.9-slim
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  images
+REPOSITORY   TAG        IMAGE ID       CREATED         SIZE
+postgres     latest     f0dfc903a663   4 days ago      434MB
+mongo        latest     4d441da0b855   12 days ago     861MB
+python       latest     d702a66b1e28   3 weeks ago     1.01GB
+python       3.9-slim   9d8cb7037cd8   3 weeks ago     125MB
+alpine       latest     91ef0af61f39   3 weeks ago     7.8MB
+nginx        latest     9527c0f683c3   6 weeks ago     188MB
+mysql        latest     c757d623b190   2 months ago    586MB
+busybox      latest     6fd955f66c23   16 months ago   4.26MB
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+### life of container 
+
+<img src="life1.png">
+
+
+### creating container using image 
+
+```
+docker  run  --name  ashuc1  -d -it  alpine:latest
+c55823529d04c5ead49428859d0ae3c24fc23bc6aac93c472780846cbc11b3cd
+
+===>
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  ps
+CONTAINER ID   IMAGE            COMMAND     CREATED          STATUS          PORTS     NAMES
+c55823529d04   alpine:latest    "/bin/sh"   3 seconds ago    Up 3 seconds              ashuc1
+928c9a70a95c   busybox          "sh"        4 seconds ago    Up 4 seconds              NarayanC1
+e8a017b5cb5f   alpine:latest    "/bin/sh"   16 seconds ago   Up 15 seconds             pradeepa
+42c373f6e561   busybox:latest   "sh"        16 seconds ago   Up 15 seconds             cbs
+6f2c063aed5e   python:latest    "python3"   25 seconds ago   Up 24 seconds             muskanc1
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+
+### resource used by container 
+
+```
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker   stats  ashuc1 
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O     BLOCK I/O   PIDS
+c55823529d04   ashuc1    0.00%     504KiB / 15.61GiB   0.00%     866B / 0B   0B / 0B     1
+^C
+
+```
+
+### stopping container 
+
+```
+docker   stop  ashuc1
+
+
+```
+
+### list all the containers (non running as well)
+
+
+```
+docker   ps -a
+```
+### starting it again 
+
+```
+docker   start  ashuc1
+ashuc1
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                                           NAMES
+0439938e5a59   mongo           "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:27017->27017/tcp, :::27017->27017/tcp   ud-mongo
+65736aef215c   busybox         "sh"                     3 minutes ago   Up 3 minutes                                                   vl3
+baa6eadfb49a   nginx:latest    "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes   80/tcp                                          pandic1
+4dca0206a188   python:latest   "python3"                4 minutes ago   Up 4 minutes                                                   sujan
+fc39d159cfcc   mongo:latest    "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   27017/tcp                                       chrp1
+7fa342d27260   python:latest   "python3"                5 minutes ago   Up 5 minutes                                                   bbcont1
+c55823529d04   alpine:latest   "/bin/sh"                6 minutes ago   Up 5 seconds                                                   ashuc1
+e8a017b5cb5f   alpine:latest   "/bin/sh"                6 minutes ago   Up 6 minutes                                                   pradeepa
+```
+
+### removing container 
+
+```
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  stop ashuc1
+ashuc1
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  rm  ashuc1
+ashuc1
+```
