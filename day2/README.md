@@ -239,3 +239,80 @@ ashuc1
 [ashu@ip-172-31-29-58 ashu-devsecops]$ docker  rm  ashuc1
 ashuc1
 ```
+
+## creating custom app docker images using build tools 
+
+<img src="b1.png">
+
+### python flask webapp containerization 
+
+### use code + Dockerfile + .dockeringore 
+
+```
+===> .dockerignore
+
+Dockerfile
+.git
+README.md
+.dockerignore
+
+====> Dockerfile 
+
+FROM python:3.9-slim 
+# it can use an existing image or can pull from docker hub 
+LABEL name=ashutoshh
+LABEL email=ashutoshh@linux.com 
+# optional but you can share your contact details to other teams
+RUN  pip install Flask==3.0.3 
+# to make any changes in existing image like installing software etc
+RUN  mkdir  /opt/ashuwebapp 
+COPY  .   /opt/ashuwebapp/ 
+# created a directory and copied code 
+# copy will be checking .dockerignore file is exists
+WORKDIR /opt/ashuwebapp/ 
+# changing current location like cd command 
+CMD ["python","ashu.py"]
+# to choose default process which can be replace by user while container creation  
+```
+
+### Building container image using dockerfile 
+
+```
+ ls 
+ashu-java-webapp  ashu-python-webapp  unisys_devsecops
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker build  -t  ashuflask:appv1  unisys_devsecops/
+
+[+] Building 5.4s (10/10) FINISHED                                                                                                docker:ashu-remote
+ => [internal] load build definition from Dockerfile                                                                                            0.0s
+ => => transferring dockerfile: 727B                                                                                                            0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                                              0.0s
+ => [internal] load .dockerignore                                                                                                               0.0s
+ => => transferring context: 138B                                                                                                               0.0s
+ => [1/5] FROM docker.io/library/python:3.9-slim                                                                                                0.1s
+ => [internal] load build context                                                                                                               0.1s
+ => => transferring context: 5.50kB                                                                                                             0.0s
+ => [2/5] RUN  pip install Flask==3.0.3                                                                                                         4.2s
+ => [3/5] RUN  mkdir  /opt/ashuwebapp                                                                                                           0.6s 
+ => [4/5] COPY  .   /opt/ashuwebapp/                                                                                                            0.1s 
+ => [5/5] WORKDIR /opt/ashuwebapp/                                                                                                              0.0s 
+ => exporting to image                                                                                                                          0.2s 
+ => => exporting layers                                                                                                                         0.2s 
+ => => writing image sha256:f600bdf0d7fd224504b079cd08adc4df5011c0e4c7063b9c41336eed1f65588a                                                    0.0s 
+ => => naming to docker.io/library/ashuflask:appv1                                                                                              0.0s
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+
+### verify images 
+
+```
+docker  images
+REPOSITORY   TAG        IMAGE ID       CREATED                  SIZE
+bbflask      appv1      15f80d35a262   Less than a second ago   137MB
+mohanflask   appv1      1e14b51f78f4   15 seconds ago           137MB
+pandiflask   appv1      885def5b3738   25 seconds ago           137MB
+tanflask     appv1      08a2c7224695   27 seconds ago           1.03GB
+cbsflask     sppv1      d7e63fb7b8cd   28 seconds ago           1.03GB
+ashuflask    appv1      f600bdf0d7fd   33 seconds ago           137MB
+```
