@@ -316,3 +316,42 @@ tanflask     appv1      08a2c7224695   27 seconds ago           1.03GB
 cbsflask     sppv1      d7e63fb7b8cd   28 seconds ago           1.03GB
 ashuflask    appv1      f600bdf0d7fd   33 seconds ago           137MB
 ```
+
+### Creating container from flask app 
+
+```
+docker run --name ashuapp1  -itd  ashuflask:appv1  
+9b4afdb8f62116021b2c52b61e21b7713fc233fb365416ba75b82dc1dbb0f046
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  ps
+CONTAINER ID   IMAGE             COMMAND            CREATED         STATUS         PORTS     NAMES
+9b4afdb8f621   ashuflask:appv1   "python ashu.py"   8 seconds ago   Up 7 seconds             ashuapp1
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+
+### port forwarding in container 
+
+<img src="contp1.png">
+
+### port mapping 
+
+```
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  kill ashuapp1
+ashuapp1
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  rm ashuapp1
+ashuapp1
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker run --name ashuapp1  -itd  -p 1234:5000   ashuflask:appv1  
+2646fa1281e798d344e3dc13d8350211aaffc645d1b5834f0b114cb2a77f1744
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  ps
+CONTAINER ID   IMAGE                 COMMAND                  CREATED              STATUS              PORTS                                       NAMES
+2646fa1281e7   ashuflask:appv1       "python ashu.py"         6 seconds ago        Up 4 seconds        0.0.0.0:1234->5000/tcp, :::1234->5000/tcp   ashuapp1
+e9eeae322e41   pka-webapp:appv1      "python demo.py"         17 seconds ago       Up 16 seconds                                                   hopeful_sammet
+935b8e9c9bb4   udayflask:v1          "python uday.py"         About a minute ago   Up About a minute
+```
+
+### changing app code required the new build of app image 
+
+<img src="build111.png">
+
