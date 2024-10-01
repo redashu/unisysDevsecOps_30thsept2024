@@ -427,3 +427,26 @@ CMD ["python" , "ashu.py"]
   193  docker login 
   194  docker push docker.io/dockerashu/flaskunisys:v1
 ```
+
+## Introduction to Container Scripting and automation tool compose 
+
+<img src="compose1.png">
+
+
+### Compose example 1
+
+```
+version: '3.9'
+services: 
+  ashu-flaskapp: 
+    image: ashu-flask:uniappv1 
+    build: 
+      context: .  # location of dockerfile 
+      dockerfile:  Dockerfile # name of dockerfile
+    container_name: ashupyc1 
+    ports:
+    - 3009:5000  
+# above steps have merging of build and run 
+  
+
+```
