@@ -68,3 +68,36 @@ TriggeredBy: ● docker.socket
 <img src="proc.png">
 
 
+### checking docker client to server connection 
+
+```
+ docker  context  ls
+NAME        DESCRIPTION                               DOCKER ENDPOINT               ERROR
+default *   Current DOCKER_HOST based configuration   unix:///var/run/docker.sock   
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+
+```
+
+### creating remote context to connect docker client to remote server
+
+```
+docker context  create ashu-remote --docker  host="tcp://172.31.28.115:2375"
+
+===>
+ docker  context  ls
+NAME          DESCRIPTION                               DOCKER ENDPOINT               ERROR
+ashu-remote                                             tcp://172.31.28.115:2375      
+default *     Current DOCKER_HOST based configuration   unix:///var/run/docker.sock  
+
+===>>
+ docker context use ashu-remote
+ashu-remote
+Current context is now "ashu-remote"
+
+===>
+
+docker  context  ls
+NAME            DESCRIPTION                               DOCKER ENDPOINT               ERROR
+ashu-remote *                                             tcp://172.31.28.115:2375      
+default         Current DOCKER_HOST based configuration   unix:///var/run/docker.sock
