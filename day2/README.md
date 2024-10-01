@@ -450,3 +450,48 @@ services:
   
 
 ```
+
+### Goto same location where compose file is there and run it 
+
+```
+ ls
+Dockerfile  README.md  alpine.dockerfile  ashu.py  compose.yaml  static  templates
+
+[ashu@ip-172-31-29-58 unisys_devsecops]$ docker-compose  up -d 
+WARN[0000] /home/ashu/ashu-devsecops/unisys_devsecops/compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 1/0
+ ! ashu-flaskapp Warning pull access denied for ashu-flask, repository does not exist or may require 'docker login': denied: req...                        0.1s 
+[+] Building 0.8s (12/12) FINISHED                                                                                                           docker:ashu-remote
+ => [ashu-flaskapp internal] load build definition from Dockerfile                                                                                         0.0s
+ => => transferring dockerfile: 727B                     
+```
+
+## compose commands 
+
+```
+docker-compose  ps
+WARN[0000] /home/ashu/ashu-devsecops/unisys_devsecops/compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME       IMAGE                 COMMAND            SERVICE         CREATED          STATUS          PORTS
+ashupyc1   ashu-flask:uniappv1   "python ashu.py"   ashu-flaskapp   53 seconds ago   Up 52 seconds   0.0.0.0:3009->5000/tcp, [::]:3009->5000/tcp
+
+[ashu@ip-172-31-29-58 unisys_devsecops]$ docker-compose  images
+
+WARN[0000] /home/ashu/ashu-devsecops/unisys_devsecops/compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+CONTAINER           REPOSITORY          TAG                 IMAGE ID            SIZE
+ashupyc1            ashu-flask          uniappv1            5cfd7c5d035e        137MB
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+```
+
+### compose commands 
+
+```
+docker-compose  up -d 
+  204  docker-compose  ps
+  205  docker-compose  images
+  206  history 
+  207  docker-compose stop 
+  208  docker-compose start
+  209  docker-compose down 
+  210  docker-compose up -d
+
+```
