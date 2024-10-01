@@ -355,3 +355,46 @@ e9eeae322e41   pka-webapp:appv1      "python demo.py"         17 seconds ago    
 
 <img src="build111.png">
 
+### understanding container registry 
+
+<img src="reg1.png">
+
+
+### pushing image to docker hub 
+
+## image tag & login 
+
+```
+docker  tag  ashuflask:appv1    docker.io/dockerashu/ashuflask:appv1 
+
+===>>
+
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  login 
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: dockerashu
+Password: 
+WARNING! Your password will be stored unencrypted in /home/ashu/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+```
+
+### pushing & logout 
+
+```
+docker  push  docker.io/dockerashu/ashuflask:appv1
+The push refers to repository [docker.io/dockerashu/ashuflask]
+5f70bf18a086: Mounted from library/redis 
+39f90e3df987: Pushed 
+d835c7c2fbdb: Pushed 
+779cdd6af0c2: Pushed 
+9e599118e168: Mounted from library/python 
+
+====> Logout 
+
+ docker  logout 
+Removing login credentials for https://index.docker.io/v1/
+```
