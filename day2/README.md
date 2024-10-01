@@ -494,4 +494,5 @@ docker-compose  up -d
   209  docker-compose down 
   210  docker-compose up -d
 
+ docker-compose up -d --build 
 ```
