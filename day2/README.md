@@ -398,3 +398,32 @@ d835c7c2fbdb: Pushed
  docker  logout 
 Removing login credentials for https://index.docker.io/v1/
 ```
+
+## Using alpine docker image to build 
+
+```
+FROM alpine 
+RUN apk add python3  py-pip   py3-flask
+WORKDIR /pycodes
+# workdir is doing create and change 
+COPY . /pycodes/
+CMD ["python" , "ashu.py"]
+```
+
+
+### commands 
+
+```
+ 183  cd  unisys_devsecops/
+  184  ls
+  185  docker build -t ashualp:pycodev1  -f  alpine.dockerfile   . 
+  186  history 
+  187   docker  run -it  --rm alpine 
+  188  docker build -t ashualp:pycodev1  -f  alpine.dockerfile   . 
+  189  docker  images 
+  190  docker run -d --name c1 -p 3009:5000 ashualp:pycodev1  
+  191  docker ps
+  192  docker  tag  ashualp:pycodev1 docker.io/dockerashu/flaskunisys:v1  
+  193  docker login 
+  194  docker push docker.io/dockerashu/flaskunisys:v1
+```
