@@ -213,3 +213,30 @@ identity.key.enc                jenkins.telemetry.Correlator.xml
 ```
 
 
+## workflow automation of various teams and their resposibility using Jenkins
+
+<img src="j2.png">
+
+
+### jenkins job config details 
+
+<img src="j3.png">
+
+### cron job schedule format 
+
+<img src="cron1.png">
+
+## Docker & jenkins integration 
+
+### adding jenkins user to docker group 
+
+```
+usermod -aG docker jenkins 
+```
+## Note: you have to restart jenkins process 
+
+### give current access without restart jenkins process
+
+```
+chmod 777 /var/run/docker.sock
+```
