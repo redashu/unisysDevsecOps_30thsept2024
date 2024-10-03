@@ -282,3 +282,128 @@ sudo yum -y install trivy
 ### installation link 
 
 [click_here](https://aquasecurity.github.io/trivy/v0.56/getting-started/installation/)
+
+### verify installation 
+
+```
+trivy  version 
+Version: 0.56.0
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ 
+
+```
+
+### scanning current code in a folder 
+
+```
+ ls
+Dockerfile  README.md  app.py  compose.yaml  requirements.txt  templates
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ 
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ 
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ trivy  fs  . 
+2024-10-03T11:25:54Z    INFO    [vulndb] Need to update DB
+2024-10-03T11:25:54Z    INFO    [vulndb] Downloading vulnerability DB...
+2024-10-03T11:25:54Z    INFO    [vulndb] Downloading artifact...        repo="ghcr.io/aquasecurity/trivy-db:2"
+53.95 MiB / 53.95 MiB [-----------------------------------------------------------------------------] 100.00% 23.02 MiB p/s 2.5s
+2024-10-03T11:25:57Z    INFO    [vulndb] Artifact successfully downloaded       repo="ghcr.io/aquasecurity/trivy-db:2"
+2024-10-03T11:25:57Z    INFO    [vuln] Vulnerability scanning is enabled
+2024-10-03T11:25:57Z    INFO    [secret] Secret scanning is enabled
+2024-10-03T11:25:57Z    INFO    [secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2024-10-03T11:25:57Z    INFO    [secret] Please see also https://aquasecurity.github.io/trivy/v0.56/docs/scanner/secret#recommendation for faster secret detection
+2024-10-03T11:25:57Z    INFO    Number of language-specific files       num=1
+2024-10-03T11:25:57Z    INFO    [pip] Detecting vulnerabilities...
+
+requirements.txt (pip)
+
+Total: 5 (UNKNOWN: 0, LOW: 1, MEDIUM: 1, HIGH: 3, CRITICAL: 0)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ Flask    │ CVE-2023-30861 │ HIGH     │ fixed  │ 2.0.3             │ 2.3.2, 2.2.5  │ flask: Possible disclosure of permanent session cookie due   │
+│          │                │          │        │                   │               │ to missing Vary: Cookie...                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-30861                   │
+├──────────┼────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Werkzeug │ CVE-2023-25577 │          │        │                   │ 2.2.3         │ python-werkzeug: high resource usage when parsing multipart  │
+│          │                │          │        │                   │               │ form data with many fields...                                │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-25577                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-34069 │          │        │                   │ 3.0.3         │ python-werkzeug: user may execute code on a developer's      │
+│          │                │          │        │                   │               │ machine                                                      │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-34069                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-46136 │ MEDIUM   │        │                   │ 3.0.1, 2.3.8  │ python-werkzeug: high resource consumption leading to denial │
+│          │                │          │        │                   │               │ of service                                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-46136                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-23934 │ LOW      │        │                   │ 2.2.3         │ python-werkzeug: cookie prefixed with = can shadow           │
+│          │                │          │        │                   │               │ unprefixed cookie                                            │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-23934                   │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘
+
+```
+
+## using trivy with more options 
+
+```
+trivy  fs  --scanners vuln,secret,misconfig  . 
+2024-10-03T11:29:07Z    INFO    [vuln] Vulnerability scanning is enabled
+2024-10-03T11:29:07Z    INFO    [misconfig] Misconfiguration scanning is enabled
+2024-10-03T11:29:07Z    INFO    [misconfig] Need to update the built-in checks
+2024-10-03T11:29:07Z    INFO    [misconfig] Downloading the built-in checks...
+156.02 KiB / 156.02 KiB [--------------------------------------------------------------------------------------------------------------------] 100.00% ? p/s 100ms
+2024-10-03T11:29:07Z    INFO    [secret] Secret scanning is enabled
+2024-10-03T11:29:07Z    INFO    [secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2024-10-03T11:29:07Z    INFO    [secret] Please see also https://aquasecurity.github.io/trivy/v0.56/docs/scanner/secret#recommendation for faster secret detection
+2024-10-03T11:29:10Z    INFO    Number of language-specific files       num=1
+2024-10-03T11:29:10Z    INFO    [pip] Detecting vulnerabilities...
+2024-10-03T11:29:10Z    INFO    Detected config files   num=1
+
+requirements.txt (pip)
+
+Total: 5 (UNKNOWN: 0, LOW: 1, MEDIUM: 1, HIGH: 3, CRITICAL: 0)
+
+┌──────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│ Library  │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
+├──────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ Flask    │ CVE-2023-30861 │ HIGH     │ fixed  │ 2.0.3             │ 2.3.2, 2.2.5  │ flask: Possible disclosure of permanent session cookie due   │
+│          │                │          │        │                   │               │ to missing Vary: Cookie...                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-30861                   │
+├──────────┼────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│ Werkzeug │ CVE-2023-25577 │          │        │                   │ 2.2.3         │ python-werkzeug: high resource usage when parsing multipart  │
+│          │                │          │        │                   │               │ form data with many fields...                                │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-25577                   │
+│          ├────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2024-34069 │          │        │                   │ 3.0.3         │ python-werkzeug: user may execute code on a developer's      │
+│          │                │          │        │                   │               │ machine                                                      │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-34069                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-46136 │ MEDIUM   │        │                   │ 3.0.1, 2.3.8  │ python-werkzeug: high resource consumption leading to denial │
+│          │                │          │        │                   │               │ of service                                                   │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-46136                   │
+│          ├────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│          │ CVE-2023-23934 │ LOW      │        │                   │ 2.2.3         │ python-werkzeug: cookie prefixed with = can shadow           │
+│          │                │          │        │                   │               │ unprefixed cookie                                            │
+│          │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-23934                   │
+└──────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘
+
+Dockerfile (dockerfile)
+
+Tests: 27 (SUCCESSES: 25, FAILURES: 2, EXCEPTIONS: 0)
+Failures: 2 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
+HIGH: Specify at least 1 USER command in Dockerfile with non-root user as argument
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.
+
+See https://avd.aquasec.com/misconfig/ds002
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+LOW: Add HEALTHCHECK instruction in your Dockerfile
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+You should add HEALTHCHECK instruction in your docker container images to perform the health check on running containers.
+
+See https://avd.aquasec.com/misconfig/ds026
+───────────────────────────────────────────────────────────────────────────────────
+
+```
