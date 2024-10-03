@@ -113,3 +113,60 @@ bash-5.1# exit
 exit
 ```
 
+### Creating compsoe file for flask and mysql 
+
+```
+docker-compose  up -d --build 
+WARN[0000] /home/ashu/ashu-devsecops/ashu_unisys_flaskMysql/compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+[+] Running 12/12
+ ✔ ashudb Pulled                                                                                                                                            9.1s 
+   ✔ eba3c26198b7 Already exists                                                                                                                            0.0s 
+   ✔ b6c54a7f9fe8 Pull complete                                                                                                                             0.4s 
+   ✔ 972686f20d79 Pull complete                                                                                                                             0.4s 
+   ✔ 48f5f58971f7 Pull complete                                                                                                                             0.7s 
+   ✔ 1c3daf5de485 Pull complete                                                                                                                             0.8s 
+   ✔ eba13b8088fe Pull complete                                                                                                                             0.8s 
+   ✔ 514ee5d23bc9 Pull complete                                                                                                                             2.0s 
+   ✔ e91f47674d25 Pull complete                                                                                                                             2.0s 
+   ✔ 077dbde9e2f6 Pull complete                                                                                                                             8.8s 
+   ✔ 466b47b075c4 Pull complete                                                                                                                             8.8s 
+   ✔ d145be117b98 Pull complete                                                                                                                             8.8s 
+[+] Building 18.1s (12/12) FINISHED                                                                                                           docker:ashu-remote
+ => [ashuflaskwebapp internal] load build definition from Dockerfile                                                                                        0.0s
+ => => transferring dockerfile: 625B                                                                                                                        0.0s
+ => [ashuflaskwebapp internal] load metadata for docker.io/library/python:3.9-slim                                                                          0.1s
+ => [ashuflaskwebapp auth] library/python:pull token for registry-1.docker.io                                                                               0.0s
+ => [ashuflaskwebapp internal] load .dockerignore                                                                                                           0.0s
+ => => transferring context: 153B                                                                                                                           0.0s
+ => CACHED [ashuflaskwebapp 1/5] FROM docker.io/library/python:3.9-slim@sha256:49f94609e5a997dc16086a66ac9664591854031d48e375945a9dbf4d1d53abbc             0.0s
+ => [ashuflaskwebapp internal] load build context                                                                                                           0.0s
+ => => transferring context: 4.40kB                                                                                                                         0.0s
+ => [ashuflaskwebapp 2/5] WORKDIR /app                                                                                                                      3.0s
+ => [ashuflaskwebapp 3/5] COPY requirements.txt .                                                                                                           0.0s
+ => [ashuflaskwebapp 4/5] RUN pip install --no-cache-dir -r requirements.txt                                                                               13.6s
+ => [ashuflaskwebapp 5/5] COPY . .                                                                                                                          0.0s 
+ => [ashuflaskwebapp] exporting to image                                                                                                                    1.2s 
+ => => exporting layers                                                                                                                                     1.2s 
+ => => writing image sha256:8535ca4ac4910abc1a3f5f8d0a23d696a91b4659f673b64465d0d61730a8bd44                                                                0.0s 
+ => => naming to docker.io/library/ashuflask:webappv1                                                                                                       0.0s 
+ => [ashuflaskwebapp] resolving provenance for metadata file                                                                                                0.0s 
+[+] Running 3/3
+ ✔ Network ashu_unisys_flaskmysql_default              Created                                                                                              0.7s 
+ ✔ Container ashudbc1                                  Started                                                                                              0.9s 
+ ✔ Container ashu_unisys_flaskmysql-ashuflaskwebapp-1  Started         
+
+ ```
+
+ ### 
+
+ ```
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ docker-compose  ps
+WARN[0000] /home/ashu/ashu-devsecops/ashu_unisys_flaskMysql/compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+NAME                                       IMAGE                COMMAND                  SERVICE           CREATED              STATUS          PORTS
+ashu_unisys_flaskmysql-ashuflaskwebapp-1   ashuflask:webappv1   "python app.py"          ashuflaskwebapp   About a minute ago   Up 58 seconds   0.0.0.0:3001->5000/tcp, [::]:3001->5000/tcp
+ashudbc1                                   mysql:8.0            "docker-entrypoint.s…"   ashudb            About a minute ago   Up 59 seconds   3306/tcp, 33060/tcp
+[ashu@ip-172-31-29-58 ashu_unisys_flaskMysql]$ 
+
+
+ ```
+
