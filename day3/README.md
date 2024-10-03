@@ -407,3 +407,22 @@ See https://avd.aquasec.com/misconfig/ds026
 ───────────────────────────────────────────────────────────────────────────────────
 
 ```
+
+### trivy commands 
+
+```
+286  trivy  fs  --scanners vuln,secret,misconfig  . 
+  287  docker-compose  ps
+  288  docker-compose up -d 
+  289  docker-compose down 
+  290  docker-compose up -d --build 
+  291  docker-compose ps
+  292  docker rm $(docker ps -aq) -f
+  293  docker-compose up -d --build 
+  294  docker-compose ps
+  295  docker-compose  exec ashuflaskwebapp  bash 
+  296  docker-compose down 
+  297  trivy  fs  --scanners vuln,secret,misconfig  . 
+  298  trivy  fs  --scanners vuln,secret   . 
+
+  ```
