@@ -170,3 +170,46 @@ ashudbc1                                   mysql:8.0            "docker-entrypoi
 
  ```
 
+ ## Intro to CICD 
+
+<img src="j.png">
+
+
+
+ ### verify jenkins on linux 
+
+ ```
+ sudo -i
+[root@ip-172-31-28-115 ~]# systemctl status jenkins 
+● jenkins.service - Jenkins Continuous Integration Server
+     Loaded: loaded (/usr/lib/systemd/system/jenkins.service; enabled; preset: disabled)
+     Active: active (running) since Thu 2024-10-03 04:24:52 UTC; 1h 50min ago
+   Main PID: 2336 (java)
+      Tasks: 51 (limit: 19152)
+     Memory: 734.9M
+        CPU: 56.807s
+     CGroup: /system.slice/jenkins.service
+             └─2336 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080
+
+Oct 03 04:24:50 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:50.633+0000 [id=40]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:50 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:50.641+0000 [id=38]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:51 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:51.152+0000 [id=40]        INFO        h.p.b.g.GlobalTimeOutConfiguration#>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.101+0000 [id=40]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.102+0000 [id=37]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.433+0000 [id=32]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.441+0000 [id=32]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.472+0000 [id=38]        INFO        jenkins.InitReactorRunner$1#onAttai>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal jenkins[2336]: 2024-10-03 04:24:52.497+0000 [id=25]        INFO        hudson.lifecycle.Lifecycle#onReady:>
+Oct 03 04:24:52 ip-172-31-28-115.ec2.internal systemd[1]: Started jenkins.service - Jenkins Continuous Integration Server.
+[root@ip-172-31-28-115 ~]# 
+[root@ip-172-31-28-115 ~]# 
+[root@ip-172-31-28-115 ~]# cd /var/lib/jenkins/
+[root@ip-172-31-28-115 jenkins]# ls
+config.xml                      jenkins.install.InstallUtil.lastExecVersion     jobs              queue.xml.bak             updates
+hudson.model.UpdateCenter.xml   jenkins.install.UpgradeWizard.state             logs              secret.key                userContent
+hudson.plugins.git.GitTool.xml  jenkins.model.JenkinsLocationConfiguration.xml  nodeMonitors.xml  secret.key.not-so-secret  users
+identity.key.enc                jenkins.telemetry.Correlator.xml       
+
+```
+
+
