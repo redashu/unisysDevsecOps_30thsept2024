@@ -240,3 +240,45 @@ usermod -aG docker jenkins
 ```
 chmod 777 /var/run/docker.sock
 ```
+
+## devops to devsecops 
+
+### Understanding SAST & DAST 
+
+<img src="sast1.png">
+
+## SAST 
+
+<img src="tool1.png">
+
+## SAST checking levels 
+
+<img src="tool2.png">
+
+### pre and post build level security check 
+
+<img src="tool3.png">
+
+## Understanding and using trivy 
+
+<img src="scan1.png">
+
+## Installing trivy on RHEL 
+
+```
+cat << EOF | sudo tee -a /etc/yum.repos.d/trivy.repo
+[trivy]
+name=Trivy repository
+baseurl=https://aquasecurity.github.io/trivy-repo/rpm/releases/\$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://aquasecurity.github.io/trivy-repo/rpm/public.key
+EOF
+sudo yum -y update
+sudo yum -y install trivy
+
+```
+
+### installation link 
+
+[click_here](https://aquasecurity.github.io/trivy/v0.56/getting-started/installation/)
