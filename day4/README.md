@@ -169,5 +169,48 @@ clientVersion:
   platform: linux/amd64
 kustomizeVersion: v5.4.2
 ```
+## Basic view of java based webap 
 
+<img src="javaw.png">
 
+## cloning sample java webapp 
+
+```
+git clone https://github.com/redashu/java-springboot.git
+Cloning into 'java-springboot'...
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 33 (delta 3), reused 0 (delta 0), pack-reused 24 (from 1)
+Receiving objects: 100% (33/33), 8.48 KiB | 8.48 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls
+ashu-java-webapp  ashu-python-webapp  ashu_unisys_flaskMysql  java-springboot  unisys_devsecops
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+
+```
+
+### creating oraclelinux container for testing java and maven 
+
+```
+docker pull oraclelinux:9
+9-slim: Pulling from library/oraclelinux
+eba3c26198b7: Already exists 
+Digest: sha256:0eb8e1dc0a6144a15926f483a8a0f7c91fc7689fc3a101e348c497a9dbf3488e
+Status: Downloaded newer image for oraclelinux:9
+docker.io/library/oraclelinux:9
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker images  | grep oracle
+oraclelinux                                        9-slim          48240b324564   13 days ago         113MB
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  run -itd --name ashujavac1 oraclelinux:9
+b96ab0ddca2a08fabc358399702f2602509c6af5bcd9511f7c3107e3d46b0c55
+[ashu@ip-172-31-29-58 ashu-devsecops]$ 
+[ashu@ip-172-31-29-58 ashu-devsecops]$ docker  exec  -it  ashujavac1  bash 
+bash-5.1# 
+bash-5.1# whoami
+root
+bash-5.1# 
+
+dnf install java-17-openjdk  java-17-openjdk-devel
+dnf install maven 
+```
