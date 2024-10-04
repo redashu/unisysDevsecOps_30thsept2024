@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('fetching github code') {
+            steps {
+                // using echo to print message 
+                echo 'we are now fetching github code in below'
+                // using git to download git repo 
+                git branch: 'master', url: 'https://github.com/redashu/ashu_unisys_flaskMysql.git'
+                // using sh command to run some commands
+                sh 'ls '
+            }
+        }
+        // verify docker and trivy 
+        stage('checking docker and compose') {
+            steps {
+                echo 'checking docker status'
+                sh 'docker version'
+                echo 'checking docker compose status'
+                sh 'docker-compose version'
+                
+            }
+            
+        }
+    }
+}
