@@ -137,4 +137,37 @@ pipeline {
 
 
 
+### installing kubectl on jump server 
+
+```
+ curl -LO https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   138  100   138    0     0   1830      0 --:--:-- --:--:-- --:--:--  1840
+100 53.7M  100 53.7M    0     0  90.2M      0 --:--:-- --:--:-- --:--:-- 90.2M
+[root@ip-172-31-29-58 sonar]# ls
+bin  conf  jre  kubectl  lib
+[root@ip-172-31-29-58 sonar]# mv kubectl  /usr/bin/
+[root@ip-172-31-29-58 sonar]# chmod +x /usr/bin/kubectl 
+[root@ip-172-31-29-58 sonar]# 
+[root@ip-172-31-29-58 sonar]# kubectl version --client 
+Client Version: v1.31.0
+Kustomize Version: v5.4.2
+[root@ip-172-31-29-58 sonar]# 
+
+===>
+kubectl  version --client  -o yaml 
+clientVersion:
+  buildDate: "2024-08-13T07:37:34Z"
+  compiler: gc
+  gitCommit: 9edcffcde5595e8a5b1a35f88c421764e575afce
+  gitTreeState: clean
+  gitVersion: v1.31.0
+  goVersion: go1.22.5
+  major: "1"
+  minor: "31"
+  platform: linux/amd64
+kustomizeVersion: v5.4.2
+```
+
 
