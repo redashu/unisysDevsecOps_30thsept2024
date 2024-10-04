@@ -119,6 +119,21 @@ pipeline {
 
 <img src="cp2.png">
 
+## Introduction to k8s platform 
+
+<img src="k8sp.png">
+
+### k8s control plane component 
+
+<img src="k8s2.png">
+
+### apiserver and schedular on control plane 
+
+<img src="k8s3.png">
+
+## setup of k8s infra 
+
+<img src="infrak8s.png">
 
 
 
