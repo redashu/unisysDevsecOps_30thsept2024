@@ -34,5 +34,19 @@ pipeline {
             }
             
         }
+        // using docker pipeline to build and push 
+        stage('building image and pushing it') {
+            steps {
+                echo 'using docker pipeline plugin to build and push image'
+                script {
+                    def imageName = "dockerashu/flaskday4"
+                    def imageTag  = "appversion1"
+                    // building image 
+                    docker.build(imageName + ":" + imageTag , " -f Dockerfile .")
+                    // pushing image
+                }
+            }
+            
+        }
     }
 }
