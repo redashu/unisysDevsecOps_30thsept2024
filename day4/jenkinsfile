@@ -13,7 +13,7 @@ pipeline {
             }
         }
         // verify docker and trivy 
-        stage('checking docker and compose') {
+        stage('checking docker and compose status') {
             steps {
                 echo 'checking docker status'
                 sh 'docker version'
@@ -40,10 +40,10 @@ pipeline {
                 echo 'using docker pipeline plugin to build and push image'
                 script {
                     def imageName = "dockerashu/flaskday4"
-                    def imageTag  = "appversion1"
+                    def imageTag  = "appversion$BUILD_NUMBER"
+                    def ashuCred = "480087f2-27c4-4acf-b208-19b1e0b0cf57"
                     // building image 
                     docker.build(imageName + ":" + imageTag , " -f Dockerfile .")
-                    // pushing image
                     // pushing image 
                     docker.withRegistry('https://registry.hub.docker.com',ashuCred){
                         docker.image(imageName + ":" + imageTag).push()
