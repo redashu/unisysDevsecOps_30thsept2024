@@ -23,5 +23,16 @@ pipeline {
             }
             
         }
+        // using compsoe and curl 
+        stage('compsoe for build and curl for app status test') {
+            steps {
+                echo 'running docker compose'
+                sh 'docker-compose down'
+                sh 'docker-compose up -d --build'
+                sh 'docker-compose ps'
+                sh 'curl -f http://localhost:3001'
+            }
+            
+        }
     }
 }
