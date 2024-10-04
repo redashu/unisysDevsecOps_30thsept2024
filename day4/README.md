@@ -61,3 +61,35 @@ d5b86f4bbdcc: Pushed
 301cbbfbd840: Pushed 
 9e599118e168: Pushed 
 ```
+
+## Introduction to jenkins declearative method using jenkinsfile 
+
+<img src="jfile.png">
+
+### jenkinsfile syntax understanding 
+
+<img src="syn.png">
+
+## jenkins file demo 
+
+### demo 1 
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('fetching github code') {
+            steps {
+                // using echo to print message 
+                echo 'we are now fetching github code in below'
+                // using git to download git repo 
+                git branch: 'master', url: 'https://github.com/redashu/ashu_unisys_flaskMysql.git'
+                // using sh command to run some commands
+                sh 'ls '
+            }
+        }
+    }
+}
+
+```
