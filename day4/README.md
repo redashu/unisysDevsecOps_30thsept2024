@@ -93,3 +93,27 @@ pipeline {
 }
 
 ```
+
+## Introduction to sonarqube 
+
+<img src="intro.png">
+
+### more info about sonarqube 
+
+<img src="info1.png">
+
+### scanning local code using sonar-scanner 
+
+```
+/opt/sonar/bin/sonar-scanner  -Dsonar.projectKey=ashutoshh-project1  -Dsonar.sources=. -Dsonar.host.url=http://3.228.109.178:9000  -Dsonartoken=sqp_06c90c72790a1c0532fb814032389ce055fe98a9
+
+09:35:18.086 INFO  Scanner configuration file: /opt/sonar/conf/sonar-scanner.properties
+09:35:18.090 INFO  Project root configuration file: NONE
+09:35:18.107 INFO  SonarScanner CLI 6.2.1.4610
+09:35:18.109 INFO  Java 17.0.12 Eclipse Adoptium (64-bit)
+09:35:18.110 INFO  Linux 6.1.109-118.189.amzn2023.x86_64 amd64
+
+```
+
+
+
