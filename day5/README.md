@@ -307,3 +307,15 @@ spec:
     - containerPort: 8080
 
 ```
+
+### creating pod 
+
+```
+kubectl  create -f pod1.yaml 
+pod/ashupod1 created
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl  get pods
+NAME       READY   STATUS    RESTARTS   AGE
+ashupod1   1/1     Running   0          15s
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+```
