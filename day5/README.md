@@ -68,3 +68,41 @@ WebApp  WebApp.war  maven-archiver
 [root@e4e6f2a15ba9 java-springboot]# 
 
 ```
+
+
+### to deploy war file we need tomcat like app server 
+
+### using multi stage dockerfile concept 
+
+<img src="mst.png">
+
+### building multistage image and do the contaioner create and test
+
+```
+docker build -t ashujava:tomcatapp1 . 
+[+] Building 0.4s (15/15) FINISHED                                                                             docker:ashu-remote
+ => [internal] load build definition from Dockerfile                                                                         0.0s
+ => => transferring dockerfile: 585B                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/tomcat:latest                                                             0.0s
+ => [internal] load metadata for docker.io/library/oraclelinux:8.4                                                           0.2s
+ => [auth] library/oraclelinux:pull token for registry-1.docker.io                                                           0.0s
+ => [internal] load .dockerignore                                                                                            0.0s
+ => => transferring context: 2B                                                                                              0.0s
+ => [warfilebuilder 1/7] FROM docker.io/library/oraclelinux:8.4@sha256:b81d5b0638bb67030b207d28586d0e714a811cc612396dbe3410  0.0s
+ => [stage-1 1/2] FROM docker.io/library/tomcat:latest                                                                       0.1s
+ => CACHED [warfilebuilder 2/7] RUN dnf install java-1.8.0-openjdk.x86_64  java-1.8.0-openjdk-devel.x86_64  maven git -y     0.0s
+ => CACHED [warfilebuilder 3/7] RUN mkdir /ashu-java                                                                         0.0s
+ => CACHED [warfilebuilder 4/7] WORKDIR /ashu-java                                                                           0.0s
+ => CACHED [warfilebuilder 5/7] RUN git clone https://github.com/redashu/java-springboot.git                                 0.0s
+ => CACHED [warfilebuilder 6/7] WORKDIR java-springboot                                                                      0.0s
+ => CACHED [warfilebuilder 7/7] RUN mvn clean package                                                                        0.0s
+ => [stage-1 2/2] COPY --from=WarfileBuilder /ashu-java/java-springboot/target/WebApp.war /usr/local/tomcat/webapps/         0.0s
+ => exporting to image                                                                                                       0.0s
+ => => exporting layers                                                                                                      0.0s
+ => => writing image sha256:75a6c6a6cb88ae47272617aabf09e5808e32ee7425a6fc3e6ae9fa47f91cf848                                 0.0s
+ => => naming to docker.io/library/ashujava:tomcatapp1                                                                       0.0s
+[ashu@ip-172-31-29-58 java-springboot]$ docker run -itd --name ashuc1 -p 3001:8080 ashujava:tomcatapp1
+daff30e90e76a21b70f4ec0162b05072c4fede7d116be0403016df956459461a
+[ashu@ip-172-31-29-58 java-springboot]$ 
+
+```
