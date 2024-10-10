@@ -186,3 +186,41 @@ Dockerfile  README.md  compose.yaml  pom.xml  src
   master
 * springboot
 ```
+
+### pushing the changes
+
+```
+git branch 
+  master
+* springboot
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git add .
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git commit  -m "spring app"
+[springboot 27e68d6] spring app
+ 12 files changed, 159 insertions(+), 192 deletions(-)
+ create mode 100644 .dockerignore
+ create mode 100644 Dockerfile
+ delete mode 100644 ashu.py
+ create mode 100644 compose.yaml
+ create mode 100644 pom.xml
+ create mode 100644 src/main/webapp/WEB-INF/web.xml
+ create mode 100644 src/main/webapp/css/jumbotron.css
+ create mode 100644 src/main/webapp/index.jsp
+ delete mode 100644 static/style.css
+ delete mode 100644 templates/about.html
+ delete mode 100644 templates/contact.html
+ delete mode 100644 templates/index.html
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git push origin springboot 
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (14/14), 3.14 KiB | 3.14 MiB/s, done.
+Total 14 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'springboot' on GitHub by visiting:
+remote:      https://github.com/redashu/unisys_devsecops/pull/new/springboot
+remote: 
+To github.com:redashu/unisys_devsecops.git
+ * [new branch]      springboot -> springboot
+
+```
