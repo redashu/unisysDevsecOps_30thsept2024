@@ -291,3 +291,19 @@ aks-agentpool-28844960-vmss000003   Ready    <none>   5h48m   v1.29.8
 [ashu@ip-172-31-29-58 unisys_devsecops]$ 
 
 ```
+
+### pod1 yaml 
+
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: ashupod1  # name of pod
+spec: 
+  containers:
+  - name: ashuc1 
+    image: dockerashu/ashujava:tomcatdeploy5
+    ports:
+    - containerPort: 8080
+
+```
