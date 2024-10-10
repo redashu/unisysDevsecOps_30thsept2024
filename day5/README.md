@@ -142,3 +142,47 @@ bb1ed3edbbba: Pushed
 96b023633e9c: Pushed 
 
 ```
+
+### putting java cod to same repo but in a new branch 
+
+```
+ls
+ashu-java-webapp  ashu-python-webapp  ashu_unisys_flaskMysql  java-springboot  unisys_devsecops
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cd unisys_devsecops/
+[ashu@ip-172-31-29-58 unisys_devsecops]$ ls
+Dockerfile  README.md  alpine.dockerfile  ashu.py  compose.yaml  static  templates
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git pull 
+Already up to date.
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git branch 
+* master
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git checkout -b springboot
+Switched to a new branch 'springboot'
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git branch 
+  master
+* springboot
+[ashu@ip-172-31-29-58 unisys_devsecops]$ ls
+Dockerfile  README.md  alpine.dockerfile  ashu.py  compose.yaml  static  templates
+[ashu@ip-172-31-29-58 unisys_devsecops]$ rm Dockerfile alpine.dockerfile  ashu.py  
+[ashu@ip-172-31-29-58 unisys_devsecops]$ ls
+README.md  compose.yaml  static  templates
+[ashu@ip-172-31-29-58 unisys_devsecops]$ rm -rf static/ templates/
+[ashu@ip-172-31-29-58 unisys_devsecops]$ ls
+README.md  compose.yaml
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+===>
+[ashu@ip-172-31-29-58 unisys_devsecops]$ cd ..
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls
+ashu-java-webapp  ashu-python-webapp  ashu_unisys_flaskMysql  java-springboot  unisys_devsecops
+[ashu@ip-172-31-29-58 ashu-devsecops]$ ls java-springboot/
+Dockerfile  README.md  pom.xml  src
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp -rf java-springboot/Dockerfile  unisys_devsecops/
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp -rf java-springboot/pom.xml  unisys_devsecops/
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cp -rf java-springboot/src/ unisys_devsecops/
+[ashu@ip-172-31-29-58 ashu-devsecops]$ cd unisys_devsecops/
+[ashu@ip-172-31-29-58 unisys_devsecops]$ ls
+Dockerfile  README.md  compose.yaml  pom.xml  src
+[ashu@ip-172-31-29-58 unisys_devsecops]$ git branch 
+  master
+* springboot
+```
