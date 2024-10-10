@@ -340,7 +340,8 @@ ashu-tomcat-788d99b9b4-64t6g   1/1     Running   0          12s
 ashu-tomcat-788d99b9b4-z9fxc   1/1     Running   0          12s
 [ashu@ip-172-31-29-58 unisys_devsecops]$ 
 
-
-
-
 ```
+
+### creating internal and external LB 
+
+<img src="lb1.png">
