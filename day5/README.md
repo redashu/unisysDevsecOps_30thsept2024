@@ -106,3 +106,39 @@ daff30e90e76a21b70f4ec0162b05072c4fede7d116be0403016df956459461a
 [ashu@ip-172-31-29-58 java-springboot]$ 
 
 ```
+
+### pushing this image to container registry of azure 
+
+```
+docker images  | grep ashu 
+ashujava                                           tomcatapp1      75a6c6a6cb88   19 minutes ago   462MB
+ashujava                                           mvnb1           28f2cb1607ee   36 minutes ago   958MB
+dockerashu/flaskday4                               appversion1     c343d8b22c17   5 days ago       315MB
+registry.hub.docker.com/dockerashu/flaskday4       appversion1     c343d8b22c17   5 days ago       315MB
+ashuflask                                          webappv1        dc988b9ac1d0   5 days ago       315MB
+dockerashu/flaskday4                               appversion11    29524c8b653e   5 days ago       315MB
+registry.hub.docker.com/dockerashu/flaskday4       appversion11    29524c8b653e   5 days ago       315MB
+ashutoshh.azurecr.io/ashupython                    flaskappv1      0caa406fd31a   6 days ago       315MB
+dockerashu/ashureponew                             appv1           4c2b7fb4d6cd   6 days ago       315MB
+dockerashu/ashureponew                             latest          4c2b7fb4d6cd   6 days ago       315MB
+dockerashu/unisysflask                             appversion1     4c2b7fb4d6cd   6 days ago       315MB
+dockerashu/unisysflask                             latest          4c2b7fb4d6cd   6 days ago       315MB
+registry.hub.docker.com/dockerashu/flaskday4       <none>          4c2b7fb4d6cd   6 days ago       315MB
+ashu-flask                                         uniappv1        b35355eb36d0   8 days ago       137MB
+ashualp                                            pycodev1        77893d4d694e   8 days ago       76.8MB
+ashuflask                                          appv2           0baae1267e36   8 days ago       137MB
+[ashu@ip-172-31-29-58 java-springboot]$ docker  tag  ashujava:tomcatapp1  ashutoshh.azurecr.io/ashujava:tomcatapp1
+[ashu@ip-172-31-29-58 java-springboot]$ docker login ashutoshh.azurecr.io
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /home/ashu/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[ashu@ip-172-31-29-58 java-springboot]$ docker push ashutoshh.azurecr.io/ashujava:tomcatapp1
+The push refers to repository [ashutoshh.azurecr.io/ashujava]
+bb1ed3edbbba: Pushed 
+5f70bf18a086: Pushed 
+96b023633e9c: Pushed 
+
+```
