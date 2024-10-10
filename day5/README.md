@@ -319,3 +319,28 @@ ashupod1   1/1     Running   0          15s
 [ashu@ip-172-31-29-58 unisys_devsecops]$ 
 
 ```
+
+
+## creating pods using deployment 
+
+<img src="dep1.png">
+
+```
+kubectl create deployment  ashu-tomcat --image=dockerashu/ashujava:tomcatdeploy5 --port    8080  --dry-run=client -o yaml >deploy1.yaml
+
+===>
+kubectl create -f deploy1.yaml 
+deployment.apps/ashu-tomcat created
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl   get deploy
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+ashu-tomcat   2/2     2            2           5s
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl  get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+ashu-tomcat-788d99b9b4-64t6g   1/1     Running   0          12s
+ashu-tomcat-788d99b9b4-z9fxc   1/1     Running   0          12s
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+
+
+
+```
