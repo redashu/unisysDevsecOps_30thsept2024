@@ -345,3 +345,23 @@ ashu-tomcat-788d99b9b4-z9fxc   1/1     Running   0          12s
 ### creating internal and external LB 
 
 <img src="lb1.png">
+
+### creating service 
+
+```
+ kubectl get deploy
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+ashu-tomcat        2/2     2            2           13m
+bb-tomcat-deploy   2/2     2            2           10m
+narayan-tomcat     2/2     2            2           3m4s
+uday-tomcat        2/2     2            2           9m52s
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl expose deployment ashu-tomcat --type LoadBalancer --port 80 --target-port 8080    --name ashulb1  --dry-run=client -o yaml >service.yaml 
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl  create -f service.yaml 
+service/ashulb1 created
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl  get service
+NAME         TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+ashulb1      LoadBalancer   10.0.189.76   <pending>     80:31665/TCP   5s
+kubernetes   ClusterIP      10.0.0.1      <none>        443/TCP        5d23h
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+```
