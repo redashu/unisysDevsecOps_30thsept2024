@@ -253,3 +253,41 @@ pipeline {
 }
 
 ```
+
+### verify kubectl software in k8s client machine 
+
+```
+kubectl version --client 
+Client Version: v1.31.0
+Kustomize Version: v5.4.2
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+
+```
+
+### connecting with kubectl to azure kubernetes
+
+```
+kubectl get nodes   --kubeconfig /tmp/config 
+NAME                                STATUS   ROLES    AGE     VERSION
+aks-agentpool-28844960-vmss000002   Ready    <none>   5h44m   v1.29.8
+aks-agentpool-28844960-vmss000003   Ready    <none>   5h44m   v1.29.8
+
+```
+
+## copy the creds to home directory 
+
+```
+[ashu@ip-172-31-29-58 unisys_devsecops]$ mkdir  ~/.kube
+mkdir: cannot create directory ‘/home/ashu/.kube’: File exists
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+[ashu@ip-172-31-29-58 unisys_devsecops]$ cp -v  /tmp/config   ~/.kube/
+'/tmp/config' -> '/home/ashu/.kube/config'
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+[ashu@ip-172-31-29-58 unisys_devsecops]$ kubectl get nodes   
+NAME                                STATUS   ROLES    AGE     VERSION
+aks-agentpool-28844960-vmss000002   Ready    <none>   5h48m   v1.29.8
+aks-agentpool-28844960-vmss000003   Ready    <none>   5h48m   v1.29.8
+[ashu@ip-172-31-29-58 unisys_devsecops]$ 
+
+```
